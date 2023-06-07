@@ -104,7 +104,8 @@ public class FirstSet {
         if (str.isEmpty()) {
             return str;
         } else {
-            return reverseString(str.substring(1)) + str.charAt(0);
+            String ans =  reverseString(str.substring(1)) + str.charAt(0);
+            return ans;
         }
     }
 
@@ -122,6 +123,20 @@ public class FirstSet {
 
         // retuning recursive funtion
         return isSorted(arr, i+1);
+    }
+
+    // 11. Reverse a Number using recursion
+    public int reverseNumber(int num){
+        // base condition -> if number is less than 10 then return
+        if(num < 10){
+            return num;
+        }
+
+        int lastdigit = num % 10; // find the last digit
+        int remainingdigits = num /10; // remove the last digit
+        int reversedNumber = reverseNumber(remainingdigits); // recursive call
+        int numOfDigits = (int) Math.log10(remainingdigits) + 1; // num of digits
+        return (lastdigit * (int)Math.pow(10, numOfDigits)) + reversedNumber; // eg 3 x 100 + 21 -> format to reverse the number
     }
 
 }

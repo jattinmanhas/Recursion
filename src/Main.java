@@ -18,6 +18,6 @@ public class Main {
 //        System.out.println(Arrays.toString(arr));
 //        System.out.println(fs.reverseString("Night"));
 //        System.out.println(fs.isSorted(arr, 0));
-
+        System.out.println(fs.reverseNumber(1234));
     }
 }
