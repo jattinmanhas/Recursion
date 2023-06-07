@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class FirstSet {
     // 1. Print Name 5 Times
     public void printName5Times(String name, int n){
@@ -62,6 +64,64 @@ public class FirstSet {
 
         // adding values of n to the recursive function.. => 5 + fn -> 4 + fn -> 3 + fn
         return num +  printReturnSum(num -1);
+    }
+
+    //6. Factorial of a Number
+    public int factorial(int n){
+        if(n<1){
+            return 1;
+        }
+        return n * factorial(n-1);
+    }
+
+    // 7. Reverse an Array in a new ArrayList
+    public void reverseArray(int[] arr, int i, ArrayList<Integer> list){
+        if(i == arr.length){
+            return;
+        }
+        reverseArray(arr, i+1, list);
+        list.add(arr[i]);
+    }
+
+    // 8. reverse an Array => In place reversal using swapping
+    public void reverseSwapArray(int[] arr, int i, int n){
+        // base condition if pointer is greater than or equal to the middle of the array
+        if(i >= n/2){
+            return;
+        }
+
+        // swapping first and last element
+        int temp = arr[i];
+        arr[i] = arr[n-i-1];
+        arr[n-i-1] = temp;
+
+        // calling recursive function...
+        reverseSwapArray(arr, i+1, n);
+    }
+
+    // 9. Reverse a String
+    public String reverseString(String str){
+        if (str.isEmpty()) {
+            return str;
+        } else {
+            return reverseString(str.substring(1)) + str.charAt(0);
+        }
+    }
+
+    // 10. Check whether the given array is sorted or not
+    public boolean isSorted(int[] arr, int i){
+        // base condition -> the pointer should not be greater than the length of the array.
+        if(i >= arr.length-1){
+            return true;
+        }
+
+        // checks if the first element is greater than the next element.
+        if(arr[i] > arr[i+1]){
+            return false;
+        }
+
+        // retuning recursive funtion
+        return isSorted(arr, i+1);
     }
 
 }
