@@ -139,4 +139,22 @@ public class FirstSet {
         return (lastdigit * (int)Math.pow(10, numOfDigits)) + reversedNumber; // eg 3 x 100 + 21 -> format to reverse the number
     }
 
+    // 12 Power of a Number
+    public int power(int r, int c){
+        // base condition : if power value if equal to zero return 1 eg: 5^0 = 1;
+        if(c == 0){
+            return 1;
+        }
+
+        // calling recursive function
+        int pow = power(r, c/2);
+
+        // if power is even -> pow x pow but for odd -> num x pow x pow
+        if(c%2 == 0){
+            return pow * pow;
+        }else{
+            return r * pow * pow;
+        }
+    }
+
 }
