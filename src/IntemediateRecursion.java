@@ -49,4 +49,45 @@ public class IntemediateRecursion {
         list.remove(list.size() -1);
         printSubsequences(index + 1, list, arr);
     }
+
+    // 4. Printing all the subsequence whose value is equal to k
+    public void printSubSum(int index, ArrayList<Integer> list, int[] arr, int sum, int target){
+        if(index >= arr.length){
+            // checking if target sum is equal to current sum...
+            if(sum == target){
+                System.out.println(list);
+            }
+            return;
+        }
+
+        list.add(arr[index]);
+        sum += arr[index];
+        printSubSum(index + 1, list, arr, sum, target);
+
+        // backtraking
+        sum -= arr[index];
+        list.remove(list.size() -1);
+        printSubSum(index + 1, list, arr, sum, target);
+    }
+
+    //5. counting all the subsequences whose sum is equal to k....
+    public int printCountSum(int index, int[] arr, int sum, int target){
+        if(index >= arr.length){
+            // checking if target sum is equal to current sum...
+            if(sum == target){
+                return 1;
+            }
+            return 0;
+        }
+
+        sum += arr[index];
+        int l = printCountSum(index + 1, arr, sum, target);
+
+        // backtraking
+        sum -= arr[index];
+        int r = printCountSum(index + 1, arr, sum, target);
+
+        return l + r;
+    }
+
 }

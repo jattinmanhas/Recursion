@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SortingRecursion {
     // 1. Linear Search which returns the first occurrence of the target value.
@@ -92,6 +93,7 @@ public class SortingRecursion {
         }
     }
 
+    // 6. Selection Sort using Recursion
     public void selectionSort(int[] arr, int row, int col, int max){
         if(row < 1){
             return;
@@ -109,6 +111,126 @@ public class SortingRecursion {
 
             selectionSort(arr, row -1, 0, 0);
         }
+    }
+
+    // 7. Merge Sort....
+    // a. Merge sort => sorting in different array
+
+    public int[] mergeSortOther(int[] arr){
+        if(arr.length == 1){
+            return arr;
+        }
+
+        int mid = arr.length/2;
+
+        // dividing arrays
+        int[] left = mergeSortOther(Arrays.copyOfRange(arr, 0, mid));
+        int[] right = mergeSortOther(Arrays.copyOfRange(arr, mid , arr.length));
+
+        return mergeOther(left, right);
+    }
+
+    // merging arrays and sorting
+    public int[] mergeOther(int[] left, int[] right){
+        int[] newArray = new int[left.length + right.length];
+        int i = 0;
+        int j = 0;
+        int k = 0;
+
+        while(i < left.length && j < right.length){
+            if(left[i] < right[j]){
+                newArray[k] = left[i];
+                i++; k++;
+            }else{
+                newArray[k] = right[j];
+                j++; k++;
+            }
+        }
+
+        while(i < left.length){
+            newArray[k] = left[i];
+            i++; k++;
+        }
+        while(j < right.length){
+            newArray[k] = right[j];
+            j++; k++;
+        }
+
+        return newArray;
+    }
+
+    // b. Merge sort => sorting in the original array
+    public void mergeSortInPlace(int[] arr, int start, int end){
+        if(end - start == 1){
+            return;
+        }
+
+        int mid = (start + end) / 2;
+        mergeSortInPlace(arr, start, mid);
+        mergeSortInPlace(arr, mid, end);
+
+        mergeInPlace(arr, start, mid, end);
+    }
+
+    public void mergeInPlace(int[] arr, int start, int mid , int end){
+        int[] newArray = new int[end-start];
+        int i = start;
+        int j = mid;
+        int k = 0;
+
+        while(i<mid && j<end){
+            if(arr[i] < arr[j]){
+                newArray[k] = arr[i];
+                i++; k++;
+            }else{
+                newArray[k] = arr[j];
+                j++; k++;
+            }
+        }
+
+        while(i < mid){
+            newArray[k] = arr[i];
+            i++; k++;
+        }
+        while(j < end){
+            newArray[k] = arr[j];
+            j++; k++;
+        }
+
+        for(int l = 0;l<newArray.length;l++){
+            arr[start + l] = newArray[l];
+        }
+    }
+
+    //
+    public void quickSort(int[] arr, int low, int high){
+        if(high > low){
+            int pi = partition(arr, low, high);
+
+            quickSort(arr, low, pi -1);
+            quickSort(arr, pi+1, high);
+        }
+    }
+
+    public int partition(int[] arr, int low, int high){
+        int pivot = arr[high];
+
+        int i = low -1;
+        for(int j = low; j<= arr.length-1; j++){
+            if(pivot > arr[j]){
+                i++;
+                swap(arr, i, j);
+            }
+        }
+
+        swap(arr, i+1, high);
+        return (i+1);
+    }
+
+    public void swap(int[] arr, int i, int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
 }

@@ -21,7 +21,7 @@ public class Main {
 //        System.out.println(fs.reverseNumber(1234));
 //        System.out.println(fs.power(2,4));
 
-        int[] array = {3,1,2};
+        int[] array = {1,2,1};
         int[] nums = {8,3,62,1,616,71,1};
         SortingRecursion sr = new SortingRecursion();
 //        System.out.println(sr.LinearSearch(array, 0, 5));
@@ -33,10 +33,17 @@ public class Main {
 //        System.out.println(Arrays.toString(nums));
 //        sr.selectionSort(nums, nums.length, 0, 0);
 //        System.out.println(Arrays.toString(nums));
+//        System.out.println(Arrays.toString(sr.mergeSortOther(nums)));
+//        sr.mergeSortInPlace(nums, 0, nums.length);
+//        System.out.println(Arrays.toString(nums));
+//        sr.quickSort(nums, 0, nums.length-1);
+//        System.out.println(Arrays.toString(nums));
 
         IntemediateRecursion ir = new IntemediateRecursion();
 //        ir.printStarPattern(5,0);
 //        System.out.println(ir.triangularSum(nums));
-        ir.printSubsequences(0, list, array);
+//        ir.printSubsequences(0, list, array);
+//        ir.printSubSum(0, list, array, 0, 2);
+        System.out.println(ir.printCountSum(0,  array, 0, 2));
     }
 }
