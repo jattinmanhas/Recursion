@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -39,11 +41,21 @@ public class Main {
 //        sr.quickSort(nums, 0, nums.length-1);
 //        System.out.println(Arrays.toString(nums));
 
+        int[] num = {2,5,2,1,2};
+        ArrayList<Integer> list1 = new ArrayList<>();
+
         IntemediateRecursion ir = new IntemediateRecursion();
 //        ir.printStarPattern(5,0);
 //        System.out.println(ir.triangularSum(nums));
 //        ir.printSubsequences(0, list, array);
 //        ir.printSubSum(0, list, array, 0, 2);
-        System.out.println(ir.printCountSum(0,  array, 0, 2));
+//        System.out.println(ir.printCountSum(0,  array, 0, 2));
+//         List<List<Integer>> ans = ir.subsetsWithDup(num);
+//        System.out.println(ans);
+//        ir.subsetSum(0,list,num, 0, list1);
+//        Collections.sort(list1);
+//        System.out.println(list1);
+//        System.out.println(ir.combinationSum(num, 7));
+//        System.out.println(ir.combinationSum2(num, 5));
     }
 }
