@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Collections.swap;
+
 public class IntemediateRecursion {
     // 1. Simple start pattern using recursion
     public void printStarPattern(int row, int col){
@@ -178,5 +180,50 @@ public class IntemediateRecursion {
             solveAnsii(i+1, candidates ,target - candidates[i], outer, inner);
             inner.remove(inner.size() -1);
         }
+    }
+
+    // 10. print all permutation of the string...
+    public void permutationsString(String p, String up){
+        if(up.isEmpty()){
+            System.out.println(p);
+            return;
+        }
+
+        char ch = up.charAt(0);
+        for(int i = 0;i<=p.length();i++){
+            String first = p.substring(0,i);
+            String last = p.substring(i, p.length());
+            permutationsString(first+ch+last, up.substring(1));
+        }
+    }
+
+    // 11. Permutations Array
+    public List<List<Integer>> permutationArray(int[] arr){
+        List<List<Integer>> outer = new ArrayList<>();
+        permute(0, arr, outer);
+        return outer;
+    }
+
+    public void permute(int index, int[] arr, List<List<Integer>> outer){
+        if(index == arr.length){
+            ArrayList<Integer> inner = new ArrayList<>();
+            for(Integer in : arr){
+                inner.add(in);
+            }
+            outer.add(new ArrayList<>(inner));
+            return;
+        }
+
+        for(int i = index; i<arr.length;i++){
+            swapcoll(i, index, arr);
+            permute(index+1, arr, outer);
+            swapcoll(i, index, arr);
+        }
+
+    }
+    public void swapcoll(int i,int j,int[]nums){
+        int temp=nums[i];
+        nums[i]=nums[j];
+        nums[j]=temp;
     }
 }

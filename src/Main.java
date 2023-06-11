@@ -41,7 +41,7 @@ public class Main {
 //        sr.quickSort(nums, 0, nums.length-1);
 //        System.out.println(Arrays.toString(nums));
 
-        int[] num = {2,5,2,1,2};
+        int[] num = {1,2,3};
         ArrayList<Integer> list1 = new ArrayList<>();
 
         IntemediateRecursion ir = new IntemediateRecursion();
@@ -57,5 +57,8 @@ public class Main {
 //        System.out.println(list1);
 //        System.out.println(ir.combinationSum(num, 7));
 //        System.out.println(ir.combinationSum2(num, 5));
+//        ir.permutationsString("", "abc");
+        System.out.println(ir.permutationArray(num));
+
     }
 }
