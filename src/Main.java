@@ -58,7 +58,8 @@ public class Main {
 //        System.out.println(ir.combinationSum(num, 7));
 //        System.out.println(ir.combinationSum2(num, 5));
 //        ir.permutationsString("", "abc");
-        System.out.println(ir.permutationArray(num));
+//        System.out.println(ir.permutationArray(num));
+//        ir.printPhoneLetters("", "12");
 
     }
 }

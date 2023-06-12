@@ -226,4 +226,46 @@ public class IntemediateRecursion {
         nums[i]=nums[j];
         nums[j]=temp;
     }
+
+    // 12. Print Phone numbers part 1. => a starts from 1 and each number contains 3 numbers....
+    // 1 -> abc, 2 -> def, 3 -> ghi ...... 9 -> yz
+    public void printPhoneLetters(String p, String up){
+        if(up.isEmpty()){
+            System.out.println(p);
+            return;
+        }
+
+        int digit = up.charAt(0) - '0';
+        for(int i = (digit - 1)*3; i< digit * 3; i++){
+            if(i==26){
+                continue;
+            }
+            char ch  = (char)('a' + i);
+            printPhoneLetters(p+ch, up.substring(1));
+        }
+    }
+
+    // part 2: letter combination of the phone number
+    List<String> mapping = new ArrayList<>(List.of("", "", "abc","def","ghi","jkl", "mno","pqrs","tuv","wxyz"));
+    public List<String> letterCombinations(String digits){
+        List<String> ans = new ArrayList<>();
+        if(digits.isEmpty()){
+            return ans;
+        }
+
+        generateCombinations(digits, "", 0, ans);
+        return ans;
+    }
+
+    public void generateCombinations(String digits, String p, int index, List<String> ans){
+        if(index == digits.length()){
+            ans.add(p);
+            return;
+        }
+
+        String currentDigit = mapping.get(digits.charAt(index) - '0');
+        for(int i = 0;i<currentDigit.length(); i++){
+            generateCombinations(digits, p+currentDigit.charAt(i), index +1, ans);
+        }
+    }
 }
