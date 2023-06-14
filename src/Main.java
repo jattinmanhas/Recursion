@@ -60,6 +60,16 @@ public class Main {
 //        ir.permutationsString("", "abc");
 //        System.out.println(ir.permutationArray(num));
 //        ir.printPhoneLetters("", "12");
+//        System.out.println(ir.countMazePath(3,3));
+//        ir.printMazePath("", 3,3);
+//        ir.diagonalPathMaze("", 3,3);
+
+        boolean[][] maze = {{true, true, true},
+                {true, true, true},
+                {true, true, true}};
+        AdvancedRecursion ar = new AdvancedRecursion();
+//        ar.obstacleMaze(maze, 0, 0, "");
+        ar.allFourDirectionsMaze(maze, 0, 0, "");
 
     }
 }

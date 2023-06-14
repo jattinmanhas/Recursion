@@ -268,4 +268,46 @@ public class IntemediateRecursion {
             generateCombinations(digits, p+currentDigit.charAt(i), index +1, ans);
         }
     }
+
+    // 13. Count path in the maze leading to the destination
+    public int countMazePath(int r, int c){
+        if(r == 1 || c == 1){
+            return 1;
+        }
+        int left = countMazePath(r-1, c);
+        int right =  countMazePath(r, c-1);
+
+        return left + right;
+    }
+
+    // 14. print all the paths to the destination...
+    public void printMazePath(String path,int r, int c){
+        if(r == 1 && c == 1){
+            System.out.println(path +  "("+r+","+c+")");
+            return;
+        }
+        if(r > 1){
+            printMazePath(path + "("+r+","+c+")" ,r-1, c);
+        }
+        if(c > 1){
+            printMazePath(path + "("+r+","+c+")" ,r,c-1);
+        }
+    }
+
+    // 15. all routes to destination in maze by moving in horizontal, vertical and diagonal direction
+    public void diagonalPathMaze(String path, int r, int c){
+        if(r == 1 && c == 1){
+            System.out.println(path);
+            return;
+        }
+        if(r> 1){
+            diagonalPathMaze(path + "H", r-1, c);
+        }
+        if(c > 1){
+            diagonalPathMaze(path + "V", r , c-1);
+        }
+        if(r > 1 && c > 1){
+            diagonalPathMaze(path+ "D", r-1, c-1);
+        }
+    }
 }
