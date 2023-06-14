@@ -69,7 +69,8 @@ public class Main {
                 {true, true, true}};
         AdvancedRecursion ar = new AdvancedRecursion();
 //        ar.obstacleMaze(maze, 0, 0, "");
-        ar.allFourDirectionsMaze(maze, 0, 0, "");
+//        ar.allFourDirectionsMaze(maze, 0, 0, "");
+        System.out.println(ar.solveNQueens(4));
 
     }
 }
