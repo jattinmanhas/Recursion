@@ -71,7 +71,8 @@ public class Main {
 //        ar.obstacleMaze(maze, 0, 0, "");
 //        ar.allFourDirectionsMaze(maze, 0, 0, "");
 //        System.out.println(ar.solveNQueens(4));
-        System.out.println(ar.totalNQueens(5));
+//        System.out.println(ar.totalNQueens(5));
+        System.out.println(ar.partition("aab"));
 
     }
 }

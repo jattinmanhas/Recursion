@@ -178,5 +178,40 @@ public class AdvancedRecursion {
         }
         return true;
     }
+
+    //5. Palindrome Partitioning
+    public List<List<String>> partition(String s){
+        List<List<String>> ans = new ArrayList<>();
+        List<String> ds = new ArrayList<>();
+        partitionHelper(s,0 ,ans, ds);
+        return ans;
+    }
+
+    public void partitionHelper(String s,int index, List<List<String>> ans, List<String> ds){
+        if(s.isEmpty()) {
+            ans.add(new ArrayList<>(ds));
+            return;
+        }
+
+        for(int i = 0; i < s.length(); i++) {
+            String current = s.substring(0, i+1);
+            if(CheckPalindrome(current)) {
+                ds.add(current);
+                partitionHelper(s.substring(i+1), index + 1, ans, ds);
+                ds.remove(ds.size() - 1);
+            }
+        }
+    }
+
+    public boolean CheckPalindrome(String str){
+        int start = 0;
+        int end = str.length() - 1;
+
+        while(start <= end) {
+            if(str.charAt(start++) != str.charAt(end--)) return false;
+        }
+        return true;
+    }
+
 }
 
